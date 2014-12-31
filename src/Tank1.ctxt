@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Tank1()
+comment1.params=statBar
+comment1.target=Tank1(StatBar)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=xposn\ yposn
+comment3.target=void\ setLocation(int,\ int)
+comment4.params=
+comment4.target=void\ damageHealth()
+comment5.params=
+comment5.target=int\ gethealth()
+comment6.params=
+comment6.target=java.lang.String\ toString()
+numComments=7

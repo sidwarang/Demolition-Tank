@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=
+comment0.target=int\ getScore()
+comment1.params=tempScore
+comment1.target=void\ increaseScore(int)
+comment2.params=tempScore
+comment2.target=void\ updateScore(int)
+comment3.params=
+comment3.target=java.util.ArrayList\ getlvlScore()
+comment4.params=temp
+comment4.target=void\ increaselvlScore(int)
+comment5.params=
+comment5.target=void\ printlvlScore()
+comment6.params=
+comment6.target=int\ getMaxScore()
+numComments=7

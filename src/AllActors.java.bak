@@ -1,0 +1,33 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.ArrayList;
+import java.util.Iterator;
+/**
+ * Write a description of class ActorsList here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class AllActors implements ActorIterator
+{  
+    ArrayList<Actor> allActors=new ArrayList<Actor>();
+    public AllActors()
+    {
+
+        allActors.add(new Tank1());
+        allActors.add(new Enemy());
+        allActors.add(new Plane());
+        allActors.add(new Bullet());
+        allActors.add(new EnemyBullet());
+        allActors.add(new Explosion());
+        allActors.add(new Wall());
+        allActors.add(new Bush());
+        allActors.add(new Obstacle1());
+        allActors.add(new HorizontalObstacle());
+
+    }
+
+    public Iterator getIterator() 
+    {
+        return allActors.iterator();
+    }
+}

@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ printDescription()
+comment1.params=score
+comment1.target=Level1(ScoreManager)
+comment2.params=
+comment2.target=void\ act()
+numComments=3

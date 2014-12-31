@@ -1,0 +1,84 @@
+import greenfoot.*;
+import java.awt.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Write a description of class TankWorld here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Level1 extends BaseLevel
+{
+
+    ScoreManager score;
+    
+    private String description = "Level 1:";
+    private int scr ;
+    
+    public Level1(int s)
+    {
+        
+        scr = s;
+    }
+    
+    public void printDescription() {
+        System.out.println( description + " " + scr ) ;
+    }
+
+    
+    public Level1(ScoreManager score)
+    {
+        super(new LevelData(
+            2,          // Total enemies
+            2,          // Enemy max health
+            1,          // Enemy speed
+            500,         // Enemy value
+            "space1.jpg"  // Background image
+            ,"Level1"
+        ), score);
+        super.addChild(this);
+        this.score = score;
+        addObject(new HorizontalObstacle(),0,200);
+        addObject(new Obstacle1(), 600,80);
+        addObject(new Obstacle1(), 300,530);
+        addObject(new Obstacle1(), 800,530);
+        addObject(new Score(),40,20);
+        
+
+    }
+    
+    public void act() {
+        
+        super.act();
+        scr  = getCurrentLevelScore();
+        if(isLevelCompleted()) {
+            //System.out.println("Level Completed");
+            //scr = score.getScore();
+            super.printDescription();
+            System.out.println("no of enemies left: " + getNoOfEnemies());
+            Greenfoot.setWorld(new Level2(score));
+        }
+        else
+        {
+            if(getObjects(Tank1.class).isEmpty())
+            {
+                
+                super.printDescription();
+               
+               // Greenfoot.setWorld(new GameOver());
+                World w = this;//getWorld();
+                GameOver go = new GameOver();
+                int textX = w.getWidth()/2;
+                int textY = w.getHeight()/2;
+                w.addObject(go, textX, textY);
+                //Greenfoot.stop();
+            
+            }
+        }
+    }
+    
+    
+   
+
+    
+}

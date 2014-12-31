@@ -1,0 +1,63 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.Iterator;
+import javax.swing.*;
+/**
+ * Write a description of class ShowActors here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class ShowActors extends Actor
+{
+    int count = 0;
+    public void act() {  
+
+        {  
+
+            if(count==0)
+            {
+                AllActors a= new AllActors();
+                showAllActors(a.getIterator());
+            }
+            Greenfoot.stop();
+        }    
+    }  
+
+    public void showAllActors(Iterator<Actor> allActors)
+    {
+        int x=50;
+        int y=150;
+        int c=0;
+        Actor temp=null;
+        String name="";
+        getWorld().showText("Game Characters",500,50);
+
+        while(allActors.hasNext())
+        {
+
+            if(c==2)
+            {
+                temp=allActors.next();
+                getWorld().addObject(temp,900,y);
+                getWorld().showText(temp.toString(),790,y);
+                y+=120;
+                c=0;
+            }
+            if(c==1)
+            {
+                temp=allActors.next();
+                getWorld().addObject(temp,500,y);
+                getWorld().showText(temp.toString(),390,y);
+                c=2;
+            }
+            if(c==0)
+            {
+                temp=allActors.next();
+                getWorld().addObject(temp,230,y);
+                getWorld().showText(temp.toString(),120,y);
+                c=1;
+            }
+        }
+
+    }
+}

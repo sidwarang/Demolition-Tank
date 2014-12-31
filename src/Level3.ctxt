@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ printDescription()
+comment1.params=score
+comment1.target=Level3(ScoreManager)
+comment2.params=min\ max
+comment2.target=int\ randPosition(int,\ int)
+comment3.params=
+comment3.target=void\ act()
+numComments=4

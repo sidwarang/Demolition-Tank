@@ -1,0 +1,116 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.util.*;
+/**
+ * Write a description of class LevelManager here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class BaseLevel extends TankWorld implements IScore
+{
+    private ArrayList<IScore> lvl = new ArrayList<IScore>();
+    private LevelData levelInfo;
+    private ScoreManager scoreManager;
+    private int enemiesCreated;
+    private HealthBar healthBar  = new HealthBar(1000, 1000);
+    int count =0;
+    public BaseLevel()
+    {
+        
+    }
+    public BaseLevel(LevelData levelInfo,ScoreManager scoreManager)
+    {    
+       this.levelInfo = levelInfo;
+       this.scoreManager = scoreManager;
+       drawBackground();
+       
+       if(count==0)
+       {
+       addPlayer();
+       addObject(healthBar, 930, 20);
+       }
+       count =1;
+       
+    }  
+    public void act()
+    {
+         addEnemies();
+         isLevelCompleted();
+         showText(String.valueOf(scoreManager.getScore()),100,20);
+    }
+    public void drawBackground()
+    {
+         GreenfootImage baseImage = new GreenfootImage(levelInfo.getBackground());
+         setBackground(baseImage);
+    }
+    public void addPlayer()
+    {
+        Tank1 tank1 =  new Tank1(healthBar);
+       addObject(tank1,100,350);
+    }
+    public void addEnemies()
+    {
+        
+        if(enemiesCreated < levelInfo.getNoOfEnemies())
+        {
+            //Greenfoot.delay(30);
+            createEnemy();
+        }
+    }
+    public void createEnemy()
+    {
+       int x =0;
+        Enemy enemy = new Enemy(levelInfo.getEnemyHealth(), levelInfo.getEnemySpeed(), levelInfo.getEnemyScore(),levelInfo.getLevel(),scoreManager);
+        if(levelInfo.getLevel().equalsIgnoreCase("level2"))
+        {
+            while(!((x=Greenfoot.getRandomNumber(getWidth()))>600))
+            {
+                x = Greenfoot.getRandomNumber(getWidth());
+            }
+        }
+        
+        int y = Greenfoot.getRandomNumber(getHeight());
+        addObject(enemy, x, y);
+        enemiesCreated++;
+    }
+    public boolean isLevelCompleted()
+    {
+        if(enemiesCreated == levelInfo.getNoOfEnemies() && getObjects(Enemy.class).isEmpty())
+        {
+           return true;
+        }
+        return false;
+    }
+    
+     public void printDescription() {
+        
+         for(IScore s:lvl)
+        {
+            //System.out.print(s.getClass().getName());
+            s.printDescription();
+        }
+    }
+
+    public void addChild(IScore c) {
+        //System.out.println(c.getClass().getName());
+	    lvl.add(c);
+	}
+
+	public void removeChild(IScore c) {
+        lvl.remove(c);
+	}
+
+	public IScore getChild(int i) {
+        // no implementation
+        return null ;
+	}
+	public int getNoOfEnemies()
+	{
+	 return (getObjects(Enemy.class).size());  
+	}
+	public int getCurrentLevelScore()
+	{
+	    return (levelInfo.getEnemyScore()*levelInfo.getNoOfEnemies()) -(levelInfo.getEnemyScore()*getNoOfEnemies());
+	}
+	
+}

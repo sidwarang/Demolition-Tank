@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=
+comment0.target=TankWorld()
+comment0.text=private\ static\ ScoreManager\ s\=\ new\ ScoreManager();\r\n\ \ \ \ static\ ArrayList<BaseLevel>\ allLevel\=\ new\ \ ArrayList<BaseLevel>();\r\n\ \ \ \ private\ static\ Level1\ level1\ \=\ new\ Level1(s);\r\n\ \ \ \ private\ static\ Level2\ level2\ \=\ new\ Level2(s);\r\nprivate\ static\ Level3\ level3\ \=\ new\ Level3(s);
+numComments=1
